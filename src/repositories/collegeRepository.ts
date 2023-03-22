@@ -41,3 +41,11 @@ export async function getCollegeById(id: number) {
         }
     })
 }
+
+export async function deleteCollegeDb(id: number) {
+    await prisma.faculdade.delete({
+        where: {
+            id: id
+        }
+    })
+}

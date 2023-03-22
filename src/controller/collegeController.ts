@@ -18,3 +18,9 @@ export async function updateCollege(req: Request, res: Response){
     const result = await collegeService.updateCollege(data, parseInt(id));
     res.status(200).send(result);
 }
+
+export async function deleteCollege(req: Request, res: Response){
+    const id = req.params.id;
+    await collegeService.deleteCollege(parseInt(id));
+    res.sendStatus(200);
+}

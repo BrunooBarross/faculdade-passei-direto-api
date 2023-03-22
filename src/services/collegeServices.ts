@@ -15,6 +15,11 @@ export async function updateCollege(data: FaculdadeInsertData, id: number) {
     return await collegeRepository.updateCollegeDb(data, id);
 }
 
+export async function deleteCollege(id: number) {
+    await checkExistingCollege(id);
+    return await collegeRepository.deleteCollegeDb(id);
+}
+
 async function checkExistingCollege(id){
     const college = await collegeRepository.getCollegeById(id);
 
