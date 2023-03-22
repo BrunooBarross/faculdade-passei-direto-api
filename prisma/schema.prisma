@@ -9,3 +9,63 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Faculdade {
+  id     Int      @id @default(autoincrement())
+  nome   String
+  cnpj   String
+  cursos Curso[]
+}
+
+model Curso {
+  id          Int            @id @default(autoincrement())
+  nome        String
+  faculdadeId Int
+  faculdade   Faculdade      @relation(fields: [faculdadeId], references: [id], onDelete: Cascade)
+  disciplina  CursoDisciplina[]
+}
+
+model Professor {
+  id          Int            @id @default(autoincrement())
+  nome        String
+  formacao    String
+  disciplinas Disciplina[]
+}
+
+model Disciplina {
+  id             Int                  @id @default(autoincrement())
+  nome           String
+  professorId    Int?
+  professor      Professor?           @relation(fields: [professorId], references: [id]) 
+  cursos         CursoDisciplina[]    
+}
+
+model CursoDisciplina {
+  id                 Int                  @unique @default(autoincrement())
+  cursoId            Int
+  curso              Curso                @relation(fields: [cursoId], references: [id], onDelete: Cascade)
+  disciplinaId       Int
+  disciplina         Disciplina           @relation(fields: [disciplinaId], references: [id], onDelete: Cascade)
+  disciplinaMatriculas DisciplinaMatricula[]
+  @@id([cursoId, disciplinaId])
+}
+
+
+model DisciplinaMatricula {
+  id               Int             @id @default(autoincrement())
+  cursoDisciplinaId Int
+  cursoDisciplina   CursoDisciplina @relation(fields: [cursoDisciplinaId], references: [id], onDelete: Cascade)
+  aluno             Aluno           @relation(fields: [alunoId], references: [id], onDelete: Cascade)
+  alunoId           Int
+  dataMatricula     DateTime       @default(now())
+
+  @@unique([cursoDisciplinaId, alunoId])
+}
+
+model Aluno {
+  id                Int                  @id @default(autoincrement())
+  nome              String
+  cpf               String
+  matriculas        DisciplinaMatricula[]
+}
+
