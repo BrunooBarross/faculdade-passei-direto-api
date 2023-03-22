@@ -18,3 +18,26 @@ export async function insertCollegeDb(data: FaculdadeInsertData) {
         }
     })
 }
+
+export async function getAllCollegeDb() {
+    return await prisma.faculdade.findMany();
+}
+
+export async function updateCollegeDb(data: FaculdadeInsertData, id: number) {
+    return await prisma.faculdade.update({
+        where: {
+            id: id
+        },
+        data: {
+            ...data
+        }
+    })
+}
+
+export async function getCollegeById(id: number) {
+    return await prisma.faculdade.findUnique({
+        where: {
+            id
+        }
+    })
+}
