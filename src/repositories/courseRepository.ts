@@ -3,7 +3,7 @@ import { Curso } from "@prisma/client";
 
 export type CursoInsertData = Omit<Curso, "id">
 
-export async function insertCourseDb(data: CursoInsertData){
+export async function insertCourseDb(data: CursoInsertData) {
     return await prisma.curso.create({
         data: {
             ...data
@@ -20,4 +20,31 @@ export async function getAllCoursesByCollegeDb(id: number) {
             cursos: true,
         }
     });
+}
+
+export async function updateCourseDb(data: CursoInsertData, id: number) {
+    return await prisma.curso.update({
+        where: {
+            id: id
+        },
+        data: {
+            ...data
+        }
+    })
+}
+
+export async function getCourseById(id: number) {
+    return await prisma.curso.findUnique({
+        where: {
+            id: id
+        },
+    });
+}
+
+export async function deleteCourseDb(id: number) {
+    await prisma.curso.delete({
+        where: {
+            id: id
+        }
+    })
 }
