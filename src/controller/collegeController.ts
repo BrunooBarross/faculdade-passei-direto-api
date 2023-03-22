@@ -24,3 +24,9 @@ export async function deleteCollege(req: Request, res: Response){
     await collegeService.deleteCollege(parseInt(id));
     res.sendStatus(200);
 }
+
+export async function getTotalCollegeStudents(req: Request, res: Response){
+    const collegeId = parseInt(req.params.id);
+    const result = await collegeService.getTotalCollegeStudents(collegeId);
+    res.status(200).send(result);
+}

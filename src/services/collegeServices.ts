@@ -28,6 +28,10 @@ export async function checkExistingCollege(id){
     }
 }
 
+export async function getTotalCollegeStudents(collegeId: number){
+    return await collegeRepository.getTotalCollegeStudentsDb(collegeId);
+}
+
 
 async function checkExistingCnpj(cnpj: string){
     const getCollegeCnpj = await collegeRepository.getCnpj(cnpj);
