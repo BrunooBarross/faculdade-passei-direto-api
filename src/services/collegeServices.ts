@@ -20,7 +20,7 @@ export async function deleteCollege(id: number) {
     return await collegeRepository.deleteCollegeDb(id);
 }
 
-async function checkExistingCollege(id){
+export async function checkExistingCollege(id){
     const college = await collegeRepository.getCollegeById(id);
 
     if (!college) {

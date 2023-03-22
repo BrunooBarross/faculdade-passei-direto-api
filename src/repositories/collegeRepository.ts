@@ -20,11 +20,7 @@ export async function insertCollegeDb(data: FaculdadeInsertData) {
 }
 
 export async function getAllCollegeDb() {
-    return await prisma.faculdade.findMany({
-        include: {
-            cursos: true
-        }
-    });
+    return await prisma.faculdade.findMany({});
 }
 
 export async function updateCollegeDb(data: FaculdadeInsertData, id: number) {
