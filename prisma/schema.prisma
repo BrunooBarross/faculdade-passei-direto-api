@@ -13,7 +13,7 @@ datasource db {
 model Faculdade {
   id     Int      @id @default(autoincrement())
   nome   String
-  cnpj   String
+  cnpj   String    @unique
   cursos Curso[]
 }
 
@@ -63,9 +63,9 @@ model DisciplinaMatricula {
 }
 
 model Aluno {
-  id                Int                  @id @default(autoincrement())
+  id                Int                    @id @default(autoincrement())
   nome              String
-  cpf               String
+  cpf               String                 @unique
   matriculas        DisciplinaMatricula[]
 }
 
