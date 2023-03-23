@@ -48,3 +48,14 @@ export async function deleteCourseDb(id: number) {
         }
     })
 }
+
+export async function getAllStudentCoursesDB(id: number) {
+    const result =  await prisma.$queryRaw`
+        SELECT a.*
+        FROM "Aluno" a
+        INNER JOIN "DisciplinaMatricula" dm ON dm."alunoId" = a.id
+        INNER JOIN "CursoDisciplina" cd ON cd."id" = dm."cursoDisciplinaId"
+        WHERE cd."cursoId" = ${id};
+    `
+    return result;
+}

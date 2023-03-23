@@ -1,4 +1,4 @@
-import * as collegeServices from "../services/collegeServices.js"
+import * as collegeServices from "./collegeServices.js"
 import * as courseRepository from "../repositories/courseRepository.js";
 
 export async function insertCourse(data: courseRepository.CursoInsertData){
@@ -20,6 +20,11 @@ export async function updateCourse(data: courseRepository.CursoInsertData, cours
 export async function deleteCourse(courseId: number){
     await checkExistingCourse(courseId);
     return await courseRepository.deleteCourseDb(courseId);
+}
+
+export async function getStudentsByCourseId(courseId: number) {
+    await checkExistingCourse(courseId);
+    return await courseRepository.getAllStudentCoursesDB(courseId);
 }
 
 export async function checkExistingCourse(courseId: number){

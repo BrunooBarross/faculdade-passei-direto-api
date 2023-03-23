@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as courseService from "../services/courseServises.js";
+import * as courseService from "../services/courseServices.js";
 import { checkInteger } from "../utils/checkInteger.js";
 
 export async function createCourse(req: Request, res: Response){
@@ -25,4 +25,10 @@ export async function deleteCourse(req: Request, res: Response){
     const courseId = await checkInteger(req.params.id);
     await courseService.deleteCourse(courseId);
     res.sendStatus(200);
+}
+
+export async function getStudentsByCourse(req: Request, res: Response){
+    const courseId = await checkInteger(req.params.id);
+    const students = await courseService.getStudentsByCourseId(courseId);
+    res.status(200).send(students);
 }

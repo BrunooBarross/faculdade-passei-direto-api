@@ -12,13 +12,8 @@ afterAll(async () => {
     await prisma.$disconnect();
 });
 
-async function deleteCollege(){
-    await prisma.$executeRaw`DELETE FROM "Faculdade"`;
-}
-
 describe("Teste no CRUD Colege", () => {
     it("Retorna 201 se o body estiver correto e persistir os dados", async () => {
-        deleteCollege();
         const body = await courseBody();
         const result = await supertest(app).post("/course").send(body);
         expect(result.status).toEqual(201);
