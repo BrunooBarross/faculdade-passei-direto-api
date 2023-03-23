@@ -33,4 +33,6 @@ export async function checkExistingCourse(courseId: number){
     if (!course) {
         throw { type: "not_Found", message: `Curso com o id ${courseId} não encontrado` }
     }
+
+    return course;
 }

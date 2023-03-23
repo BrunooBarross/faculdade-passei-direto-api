@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { collegeInsertData } from "../schemas/collegeSchema.js";
 
-export async function validadeDataCollege(req: Request, res: Response, next: NextFunction){
+export async function validateCollegeData(req: Request, res: Response, next: NextFunction){
     const { error } = collegeInsertData.validate(req.body);
 
     if (error) {
