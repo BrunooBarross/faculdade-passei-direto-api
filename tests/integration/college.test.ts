@@ -10,7 +10,7 @@ afterAll(async () => {
     await prisma.$disconnect();
 });
 
-describe("Route POST /recommendations", () => {
+describe("Testes nas rotas de Faculdades", () => {
     it("Retorna 201 se o body estiver correto e persiste os dados", async () => {
         const body = collegeBody();
         const result = await supertest(app).post("/college").send(body);
