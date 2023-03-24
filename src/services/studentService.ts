@@ -4,25 +4,30 @@ export async function getStudents(){
     return await studentRepository.getStudentsDb();
 }
 
+export async function getAllStudentDisciplines(studentId: number) {
+    await checkExistingStudent(studentId);
+    return await studentRepository.getAllStudentDisciplinesDb(studentId);
+}
+
 export async function createStudent(data:studentRepository.StudentData){
     return await studentRepository.createStudentDb(data);
 }
 
-export async function updateStudent(idStudent: number, data:studentRepository.StudentData){
-    await checkExistingStudent(idStudent);
-    return await studentRepository.updateStudentDb(idStudent, data);
+export async function updateStudent(studentId: number, data:studentRepository.StudentData){
+    await checkExistingStudent(studentId);
+    return await studentRepository.updateStudentDb(studentId, data);
 }
 
-export async function deleteStudent(idStudent: number) {
-    await checkExistingStudent(idStudent);
-    return await studentRepository.deleteStudentDb(idStudent);
+export async function deleteStudent(studentId: number) {
+    await checkExistingStudent(studentId);
+    return await studentRepository.deleteStudentDb(studentId);
 }
 
-export async function checkExistingStudent(idStudent: number) {
-    const student = await studentRepository.getStudentDb(idStudent);
+export async function checkExistingStudent(studentId: number) {
+    const student = await studentRepository.getStudentDb(studentId);
 
     if (!student) {
-        throw { type: "not_Found", message: `Aluno com o id ${idStudent} não encontrado` }
+        throw { type: "not_Found", message: `Aluno com o id ${studentId} não encontrado` }
     }
 
     return student;

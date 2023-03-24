@@ -52,7 +52,7 @@ model CursoDisciplina {
 
 
 model DisciplinaMatricula {
-  id               Int             @id @default(autoincrement())
+  id                Int             @id @default(autoincrement())
   cursoDisciplinaId Int
   cursoDisciplina   CursoDisciplina @relation(fields: [cursoDisciplinaId], references: [id], onDelete: Cascade)
   aluno             Aluno           @relation(fields: [alunoId], references: [id], onDelete: Cascade)

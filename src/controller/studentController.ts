@@ -7,6 +7,12 @@ export async function getAllStudents(req: Request, res: Response) {
     res.status(200).send(result);
 }
 
+export async function getAllStudentDisciplines(req: Request, res: Response) {
+    const studentId = await checkInteger(req.params.id);
+    const result = await studentService.getAllStudentDisciplines(studentId);
+    res.status(200).send(result);
+}
+
 export async function createStudent(req: Request, res: Response) {
     const data = req.body;
     const result = await studentService.createStudent(data);
