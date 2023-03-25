@@ -17,7 +17,11 @@ export async function deleteDisciplineDb(id: number) {
 }
 
 export async function getDisciplinesDb() {
-    return await prisma.disciplina.findMany();
+    return await prisma.$queryRaw`
+        SELECT d.*, cd.id AS "cursoDisciplinaId"
+        FROM "Disciplina" d
+        JOIN "CursoDisciplina" cd ON d.id = cd."disciplinaId";
+    `
 }
 
 export async function getDisciplineDb(id: number) {
