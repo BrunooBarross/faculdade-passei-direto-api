@@ -29,6 +29,7 @@ export async function checkExistingCollege(id){
 }
 
 export async function getTotalCollegeStudents(collegeId: number){
+    await checkExistingCollege(collegeId);
     return await collegeRepository.getTotalCollegeStudentsDb(collegeId);
 }
 

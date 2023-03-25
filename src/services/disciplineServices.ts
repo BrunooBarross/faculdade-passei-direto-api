@@ -7,6 +7,7 @@ export async function getDisciplines() {
 }
 
 export async function getStundentsByDisciplineId(disciplinaId: number){
+    await checkExistingDisciplineId(disciplinaId);
     return await disciplineRepository.getStundentsByDisciplineIdDb(disciplinaId);
 }
 
