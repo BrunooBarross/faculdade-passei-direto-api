@@ -18,8 +18,6 @@ export async function insertCollege(){
     "cnpj": "22.222.222/222-22"});
 }
 
-
-
 export async function insertCourse() {
     const data = await courseBody();
     return await courseRepository.insertCourseDb(data);

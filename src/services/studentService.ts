@@ -1,6 +1,6 @@
 import * as studentRepository from "../repositories/studentRepository.js"
 
-export async function getStudents(){
+export async function getStudents() {
     return await studentRepository.getStudentsDb();
 }
 
@@ -9,11 +9,12 @@ export async function getAllStudentDisciplines(studentId: number) {
     return await studentRepository.getAllStudentDisciplinesDb(studentId);
 }
 
-export async function createStudent(data:studentRepository.StudentData){
+export async function createStudent(data: studentRepository.StudentData) {
+    await checkExistsStudentByCpf(data.cpf);
     return await studentRepository.createStudentDb(data);
 }
 
-export async function updateStudent(studentId: number, data:studentRepository.StudentData){
+export async function updateStudent(studentId: number, data: studentRepository.StudentData) {
     await checkExistingStudent(studentId);
     return await studentRepository.updateStudentDb(studentId, data);
 }
@@ -31,4 +32,13 @@ export async function checkExistingStudent(studentId: number) {
     }
 
     return student;
+}
+
+export async function checkExistsStudentByCpf(cpf: string) {
+    const student = await studentRepository.checkExistsStudentByCpfDb(cpf);
+
+    if (student) {
+        throw { type: "conflict", message: `Cpf já esta em uso` }
+    }
+
 }

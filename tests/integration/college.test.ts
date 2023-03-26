@@ -19,13 +19,20 @@ describe("Testes nas rotas de Faculdades", () => {
         expect(id).not.toBeNull();
     });
 
+    it("Retorna 409 se já existir um cnpj", async () => {
+        const body = collegeBody();
+        await supertest(app).post("/college").send(body);
+        const result = await supertest(app).post("/college").send(body);
+        expect(result.status).toEqual(409);
+    });
+
     it("Retorna 422 se algum campo do body estiver incorreto", async () => {
         const body = incorrectData();
         const result = await supertest(app).post("/college").send(body);
         expect(result.status).toEqual(422);
     });
 
-    it("Retorna 201 se atualizado os dados", async () => {
+    it("Retorna 200 se atualizado os dados", async () => {
         const body1 = await insertCollege();
         const body = collegeBody();
         const result = await supertest(app).put(`/college/${body1.id}`).send(body);

@@ -33,3 +33,11 @@ export async function updateStudentDb(id: number, data: StudentData) {
 export async function deleteStudentDb(id: number) {
     return await prisma.aluno.delete({ where: { id } });
 }
+
+export async function checkExistsStudentByCpfDb(cpf: string) {
+    return await prisma.aluno.findFirst({
+        where: {
+            cpf,
+        },
+    });
+}
