@@ -103,6 +103,7 @@ $ npm run test
 ## 🚀 API:
 
 - Caso queria executar a api utilize novamente o comando "npm run dev", e importe em seu insomnia o arquivo localizado na pasta insomnia.
+- Para importar leia: https://docs.insomnia.rest/insomnia/import-export-data
 - As rotas são:
 
 ```yml
