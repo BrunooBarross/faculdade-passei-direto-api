@@ -19,7 +19,7 @@
 ---
 
  - O objetivo desse teste é criar uma API baseado em um modelo de banco de dados;
- - A API deve ser construida visando se possível realizar os CRUDS das entidades.
+ - A API deve ser construida visando ser possível realizar os CRUDS das entidades.
 
 ---
 
