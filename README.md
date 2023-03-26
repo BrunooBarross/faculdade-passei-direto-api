@@ -18,8 +18,8 @@
 
 ---
 
- - O objetivo dessa teste é criar um API baseado em um modelo de banco de dados;
- - A API deve ser construida visando se possível realizar os CRUDS da entidades;
+ - O objetivo desse teste é criar um API baseado em um modelo de banco de dados;
+ - A API deve ser construida visando se possível realizar os CRUDS das entidades.
 
 ---
 
@@ -48,7 +48,7 @@
  - O aluno possui um estado global porque ele pode estar em disciplinas distintas de cursos e até faculdades diferentes;
  - O professor possui um estado global porque pode dar aulas em disciplinas de cursos diferentes e até em faculdades diferentes;
  - Ao cadastrar uma disciplina, fica opcional a vinculação a um professor, sendo possível adicionar o professor a qualquer momento;
- - Foram adicionados rotas to tipo GET buscando todos os dados para facilitar na busca de id`s e facilitar a correção e utilização no insomnia.
+ - Foram adicionados rotas to tipo GET buscando todos os dados para facilitar na busca de id`s assim como a correção e utilização no insomnia.
 
 
 ## 👨🏻‍💻 Instalação
@@ -91,7 +91,7 @@ $ npm run migrate:seed          - para erros migrate:seed
 
 ## 🛫 Testes
 
-- Caso queira executar os testes da aplicação, tenha a certeza de ter configurado o .env.test na raiz do projeto conforme o passo 1 dessa instalação, lembrando que no final dessa url tem que colocar um nome diferente de um banco, este banco não precisa estar criado, apenas o nome deverá ser diferente do banco do arquivo .env
+- Caso queira executar os testes da aplicação, tenha a certeza de ter configurado o .env.test na raiz do projeto conforme o passo 1 dessa instalação, lembrando que no final da url do .env.test tem que colocar um nome diferente de um banco de dados, este banco não precisa estar criado, apenas o nome deverá ser diferente do banco do arquivo .env
 - Com o arquivo configrado corretantente execute:
 
 ```bash
