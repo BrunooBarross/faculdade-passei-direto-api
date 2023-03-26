@@ -89,7 +89,7 @@ $ npm run migrate:seed          - para erros migrate:seed
 
 ```
 
-## 🛫 Testes
+## 🛫 Testes Automatizados
 
 - Caso queira executar os testes da aplicação, tenha a certeza de ter configurado o .env.test na raiz do projeto conforme o passo 1 dessa instalação, lembrando que no final da url do .env.test tem que colocar um nome diferente de um banco de dados, este banco não precisa estar criado, apenas o nome deverá ser diferente do banco do arquivo .env
 - Com o arquivo configrado corretantente execute:
